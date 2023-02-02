@@ -207,6 +207,7 @@
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
             this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createToolStripMenuItem.Text = "Create";
+            this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // saveChangesToolStripMenuItem
             // 
@@ -236,6 +237,7 @@
             this.openDirectoryToolStripMenuItem1.Name = "openDirectoryToolStripMenuItem1";
             this.openDirectoryToolStripMenuItem1.Size = new System.Drawing.Size(230, 22);
             this.openDirectoryToolStripMenuItem1.Text = "Open directory";
+            this.openDirectoryToolStripMenuItem1.Click += new System.EventHandler(this.openDirectoryToolStripMenuItem1_Click);
             // 
             // openDirectoryToolStripMenuItem
             // 
@@ -248,6 +250,7 @@
             this.importFileIntoDirectoryToolStripMenuItem.Name = "importFileIntoDirectoryToolStripMenuItem";
             this.importFileIntoDirectoryToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.importFileIntoDirectoryToolStripMenuItem.Text = "Import file into directory";
+            this.importFileIntoDirectoryToolStripMenuItem.Click += new System.EventHandler(this.importFileIntoDirectoryToolStripMenuItem_Click);
             // 
             // neptuneIDEToolStripMenuItem
             // 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using Windows.Globalization;
 
 namespace NeptuneIDE
@@ -30,7 +32,7 @@ namespace NeptuneIDE
             Program.log("Created header node");
 
             Program.log("Adding file nodes");
-            string[] files = Directory.GetFiles(dirPath, "*.lua");
+            string[] files = Directory.GetFiles(dirPath);
 
             foreach (string file in files)
             {
@@ -57,18 +59,28 @@ namespace NeptuneIDE
 
         private void loadFileFromTree(string file)
         {
-            Program.log("Loading in file");
-            filePath = dirPath + @"\" + file;
-            Program.log("  name : " + file);
-            Program.log("  path : " + filePath);
-            editorTextbox.Text = File.ReadAllText(filePath);
-            Program.log("Pushed file to editorTextbox");
-            loadedfileText.Text = filePath;
-            Program.log("Set loadedfileText to filePath");
+            if (File.Exists(dirPath + @"\" + file))
+            {
+                Program.log("Loading in file");
+                filePath = dirPath + @"\" + file;
+                Program.log("  name : " + file);
+                Program.log("  path : " + filePath);
+                editorTextbox.Text = File.ReadAllText(filePath);
+                Program.log("Pushed file to editorTextbox");
+                loadedfileText.Text = filePath;
+                Program.log("Set loadedfileText to filePath");
+
+                SetHighlighting(filePath);
+            }   
         }
 
         private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (filePath == null)
+            {
+                MessageBox.Show("No file loaded");
+                return;
+            }
             Program.log("Saving file");
             File.WriteAllText(filePath, editorTextbox.Text);
             Program.log("Wrote editorTextbox contents to file");
@@ -87,14 +99,17 @@ namespace NeptuneIDE
                 Program.log("Opening openFileDialog");
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    filePath = openFileDialog.FileName;   
-                }
-                Program.log("Set filePath to : " + filePath);
-                editorTextbox.Text = File.ReadAllText(filePath);
-                Program.log("Pushed file to editorTextbox");
-                loadedfileText.Text = filePath;
+                    filePath = openFileDialog.FileName;
 
-                SetHighlighting(filePath);
+                    Program.log("Set filePath to : " + filePath);
+                    editorTextbox.Text = File.ReadAllText(filePath);
+
+                    Program.log("Pushed file to editorTextbox");
+                    loadedfileText.Text = filePath;
+
+                    Program.log("Setting highlighting");
+                    SetHighlighting(filePath);
+                }      
             }
             catch (Exception ex)
             {
@@ -148,7 +163,55 @@ namespace NeptuneIDE
             editorLanguage = editorTextbox.Language.ToString();
             languageLabel.Text = editorLanguage;
 
+            editorTextbox.OnTextChanged();
+
             Program.SetFileRPC();
+        }
+
+        private void openDirectoryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                dirPath = dialog.SelectedPath;
+                dirName = Path.GetDirectoryName(dirPath);
+                
+                loadNodes();
+            }
+        }
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            Stream myStream;
+
+            saveFileDialog1.Filter = "All files (*.*)|*.*";
+            saveFileDialog1.InitialDirectory = dirPath;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                File.Create(saveFileDialog1.FileName).Close();
+                if (editorTextbox.Text.Length > 0) 
+                {
+                    StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+                    sw.WriteLine(editorTextbox.Text);
+                    sw.Close();
+                }
+            }
+        }
+
+        private void importFileIntoDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dirPath == null)
+            {
+                MessageBox.Show("No directory loaded");
+                return;
+            }
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.Copy(dirPath, openFileDialog.FileName);
+            }
         }
     }
 }
