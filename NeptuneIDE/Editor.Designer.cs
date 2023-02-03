@@ -36,7 +36,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.verText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.languageLabel = new System.Windows.Forms.Label();
             this.loadedfileText = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.panel4.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editorTextbox)).BeginInit();
@@ -102,7 +102,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.panel3.Controls.Add(this.verText);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.Logo);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(166, 65);
@@ -127,15 +127,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "NeptuneIDE";
             // 
-            // pictureBox1
+            // Logo
             // 
-            this.pictureBox1.Image = global::NeptuneIDE.Properties.Resources.neptuneide_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.Logo.Image = global::NeptuneIDE.Properties.Resources.neptuneide_logo;
+            this.Logo.Location = new System.Drawing.Point(5, 5);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(56, 56);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Logo.TabIndex = 0;
+            this.Logo.TabStop = false;
+            this.Logo.Click += new System.EventHandler(this.Logo_Click);
             // 
             // panel4
             // 
@@ -198,21 +199,21 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openFileToolStripMenuItem.Text = "Open file";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // saveChangesToolStripMenuItem
             // 
             this.saveChangesToolStripMenuItem.Name = "saveChangesToolStripMenuItem";
-            this.saveChangesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveChangesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveChangesToolStripMenuItem.Text = "Save changes";
             this.saveChangesToolStripMenuItem.Click += new System.EventHandler(this.saveChangesToolStripMenuItem_Click);
             // 
@@ -344,7 +345,7 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -358,7 +359,7 @@
 
         private Panel panel1;
         private Panel panel2;
-        private PictureBox pictureBox1;
+        private PictureBox Logo;
         private Panel panel3;
         private Panel panel4;
         private MenuStrip menuStrip;

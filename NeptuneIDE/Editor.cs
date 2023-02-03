@@ -26,7 +26,10 @@ namespace NeptuneIDE
         private void loadNodes()
         {
             Program.log("Beginning node update");
+
             projectTree.BeginUpdate();
+
+            projectTree.Nodes.Clear();
 
             projectTree.Nodes.Add(dirName);
             Program.log("Created header node");
@@ -71,7 +74,12 @@ namespace NeptuneIDE
                 Program.log("Set loadedfileText to filePath");
 
                 SetHighlighting(filePath);
-            }   
+            } 
+            else
+            {
+                Program.log("File does not exist, reloading tree");
+                loadNodes();
+            }
         }
 
         private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,7 +182,7 @@ namespace NeptuneIDE
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 dirPath = dialog.SelectedPath;
-                dirName = Path.GetDirectoryName(dirPath);
+                dirName = new DirectoryInfo(dirPath).Name;
                 
                 loadNodes();
             }
@@ -196,6 +204,7 @@ namespace NeptuneIDE
                     StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
                     sw.WriteLine(editorTextbox.Text);
                     sw.Close();
+                    loadNodes();
                 }
             }
         }
@@ -211,6 +220,18 @@ namespace NeptuneIDE
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 File.Copy(dirPath, openFileDialog.FileName);
+            }
+        }
+
+        private void Logo_Click(object sender, EventArgs e)
+        {
+            if (editorTextbox.Text == "aezakmi" && Program.ver.EndsWith("d"))
+            {
+                Program.log("Debug menu activated.");
+
+                Form dbgmenu = new DebugMenu();
+
+                dbgmenu.Show();
             }
         }
     }

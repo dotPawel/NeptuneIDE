@@ -63,6 +63,16 @@ namespace NeptuneIDE.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cool_gradient {
+            get {
+                object obj = ResourceManager.GetObject("cool gradient", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap neptuneide_logo {
             get {
                 object obj = ResourceManager.GetObject("neptuneide logo", resourceCulture);
