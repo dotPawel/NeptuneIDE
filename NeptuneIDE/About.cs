@@ -20,6 +20,7 @@ namespace NeptuneIDE
         private void About_Load(object sender, EventArgs e)
         {
             versionText.Text += Program.ver;
+            usedbyLabel.Text += Environment.UserName;
         }
     }
 }

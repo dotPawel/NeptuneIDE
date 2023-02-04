@@ -265,13 +265,14 @@
             // aboutNeptuneIDEToolStripMenuItem
             // 
             this.aboutNeptuneIDEToolStripMenuItem.Name = "aboutNeptuneIDEToolStripMenuItem";
-            this.aboutNeptuneIDEToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.aboutNeptuneIDEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutNeptuneIDEToolStripMenuItem.Text = "About NeptuneIDE";
+            this.aboutNeptuneIDEToolStripMenuItem.Click += new System.EventHandler(this.aboutNeptuneIDEToolStripMenuItem_Click);
             // 
             // exitNeptuneIDEToolStripMenuItem
             // 
             this.exitNeptuneIDEToolStripMenuItem.Name = "exitNeptuneIDEToolStripMenuItem";
-            this.exitNeptuneIDEToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exitNeptuneIDEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitNeptuneIDEToolStripMenuItem.Text = "Exit NeptuneIDE";
             this.exitNeptuneIDEToolStripMenuItem.Click += new System.EventHandler(this.exitNeptuneIDEToolStripMenuItem_Click);
             // 

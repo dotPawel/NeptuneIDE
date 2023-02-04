@@ -234,5 +234,12 @@ namespace NeptuneIDE
                 dbgmenu.Show();
             }
         }
+
+        private void aboutNeptuneIDEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form about = new About();
+
+            about.Show();
+        }
     }
 }
