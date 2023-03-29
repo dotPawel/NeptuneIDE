@@ -6,7 +6,7 @@ namespace NeptuneIDE
 {
     internal class Program
     {
-        public static string ver = "0.4d";
+        public static string ver = "1.0d";
         // d - debug
         // r - release
         // rc - release candidate
@@ -32,8 +32,6 @@ namespace NeptuneIDE
                 }
 
                 Console.WriteLine(time + " // Neptune started");
-                Console.WriteLine(time + " // NeptuneIDE build information:");
-                Console.WriteLine(time + " //   Build : " + ver);
 
                 Application.EnableVisualStyles();
                 Console.WriteLine(time + " // Enabled VisualStyles");
